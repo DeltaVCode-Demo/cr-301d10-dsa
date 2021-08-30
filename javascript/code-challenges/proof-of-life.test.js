@@ -9,7 +9,7 @@ describe('proof of life', () => {
 
   it('lives', () => {
 
-    expect(isAlive()).toBeTruthy();
+    expect(isAlive()).toBe(true);
 
   });
 
