@@ -1,7 +1,7 @@
 'use strict';
 
 function isAlive() {
-  return 'true';
+  return true;
 }
 
 
