@@ -13,9 +13,9 @@ const addOne = (arr) => {
 
   // Solution code here...
   arr.forEach((number, i) => {
-    console.log(number);
+    // result[i] = number + 1;
 
-    result[i] = number + 1;
+    result.push(number + 1);
   });
 
   return result;
