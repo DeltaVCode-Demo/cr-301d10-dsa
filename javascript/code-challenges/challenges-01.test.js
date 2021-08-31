@@ -12,9 +12,11 @@ const addOne = (arr) => {
   let result = [];
 
   // Solution code here...
-  arr.forEach((number, i) => {
-    // result[i] = number + 1;
+  // arr.forEach((number, i) => {
+  //   result[i] = number + 1;
+  // });
 
+  arr.forEach(number => {
     result.push(number + 1);
   });
 
