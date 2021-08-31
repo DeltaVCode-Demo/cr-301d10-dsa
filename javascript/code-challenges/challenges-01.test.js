@@ -54,8 +54,16 @@ Write a function named `allUpperCase` that takes an array of strings, and return
 Use `forEach` to loop over the input array. The modified strings should each be added into a local array. Return that local array.
 ------------------------------------------------------------------------------------------------ */
 
-const allUpperCase = (arr) => {
-  // Solution code here...
+const allUpperCase = (words) => {
+  let result = [];
+
+  let forEachResult = words.forEach((word, i) => {
+    result[i] = word.toUpperCase();
+  });
+
+  console.log({ forEachResult }); // undefined!
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -163,7 +171,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe.skip('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array of uppercase strings', () => {
     expect(allUpperCase(['hi', 'how', 'are', 'you'])).toStrictEqual(['HI', 'HOW', 'ARE', 'YOU']);
   });
