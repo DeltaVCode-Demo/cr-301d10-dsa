@@ -39,5 +39,23 @@ namespace DataStructuresTests
       // Make sure the Head node does not have a Next
       Assert.Null(list.Head.Next);
     }
+
+    [Fact]
+    public void Insert_into_list_not_empty_works()
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+      list.Insert(5);
+
+      // Act
+      list.Insert(3);
+
+      // Assert
+      Assert.NotNull(list.Head);
+      Assert.Equal(3, list.Head.Value);
+      Assert.NotNull(list.Head.Next);
+      Assert.Equal(5, list.Head.Next.Value);
+      Assert.Null(list.Head.Next.Next);
+    }
   }
 }
