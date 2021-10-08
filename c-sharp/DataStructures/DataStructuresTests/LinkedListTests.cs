@@ -40,7 +40,7 @@ namespace DataStructuresTests
       Assert.Null(list.Head.Next);
     }
 
-    [Fact]
+    [Fact(Skip = "Homework")]
     public void Insert_into_list_not_empty_works()
     {
       // Arrange
@@ -58,7 +58,7 @@ namespace DataStructuresTests
       Assert.Null(list.Head.Next.Next);
     }
 
-    [Theory]
+    [Theory(Skip = "Homework")]
     [InlineData(1, false)]
     [InlineData(2, true)]
     [InlineData(3, true)]
