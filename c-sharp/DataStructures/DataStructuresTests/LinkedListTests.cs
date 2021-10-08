@@ -75,5 +75,20 @@ namespace DataStructuresTests
       // Assert
       Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void ToString_returns_NULL_for_empty_list()
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+
+      // Act
+      string result = list.ToString();
+
+      // Assert
+      Assert.Equal("NULL", result);
+    }
+
+    // TODO: Add tests for ToString() with non-empty list
   }
 }

@@ -21,5 +21,12 @@ namespace DataStructures
       // TODO: finish me!
       return false;
     }
+
+    // For now, just use override because Keith said so
+    public override string ToString()
+    {
+      // TODO: Traverse to build the string
+      return "NULL";
+    }
   }
 }
