@@ -8,9 +8,16 @@ namespace DataStructuresTests
   public class LinkedListTests
   {
     [Fact]
-    public void Linked_List_Created_With_A_Value_Has_A_Head()
+    public void Empty_list_has_null_Head()
     {
-      Assert.Equal(true, true);
+      // Arrange
+      LinkedList list = new LinkedList();
+
+      // Act
+      Node head = list.Head;
+
+      // Assert
+      Assert.Null(head);
     }
   }
 }

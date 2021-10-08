@@ -6,6 +6,6 @@ namespace DataStructures
 {
   public class LinkedList
   {
-
+    public Node Head { get; set; }
   }
 }
