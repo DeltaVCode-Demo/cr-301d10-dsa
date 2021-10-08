@@ -6,5 +6,6 @@ namespace DataStructures
 {
   public class Node
   {
+    public int Value { get; set; }
   }
 }
