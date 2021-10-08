@@ -57,5 +57,23 @@ namespace DataStructuresTests
       Assert.Equal(5, list.Head.Next.Value);
       Assert.Null(list.Head.Next.Next);
     }
+
+    [Theory]
+    [InlineData(1, false)]
+    [InlineData(2, true)]
+    [InlineData(3, true)]
+    public void Includes_finds_value_or_not(int valueToFind, bool expected)
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+      list.Insert(2);
+      list.Insert(3);
+
+      // Act
+      bool result = list.Includes(valueToFind);
+
+      // Assert
+      Assert.Equal(expected, result);
+    }
   }
 }

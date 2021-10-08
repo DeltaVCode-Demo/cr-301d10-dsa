@@ -15,5 +15,11 @@ namespace DataStructures
 
       this.Head = newNode;
     }
+
+    public bool Includes(int valueToFind)
+    {
+      // TODO: finish me!
+      return false;
+    }
   }
 }
