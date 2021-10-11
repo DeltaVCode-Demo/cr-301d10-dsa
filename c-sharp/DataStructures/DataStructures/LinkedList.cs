@@ -40,8 +40,23 @@ namespace DataStructures
     // For now, just use override because Keith said so
     public override string ToString()
     {
-      // TODO: Traverse to build the string
-      return "NULL";
+      string output = "";
+
+      Node current = Head;
+      while (current != null)
+      {
+        // Do something interesting with current
+        output += current.Value;
+        output += " -> ";
+
+        // Traverse to Next
+        current = current.Next;
+      }
+
+      // Got to the end
+      output = output + "NULL";
+
+      return output;
     }
   }
 }
