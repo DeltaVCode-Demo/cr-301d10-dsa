@@ -21,7 +21,19 @@ namespace DataStructures
 
     public bool Includes(int valueToFind)
     {
-      // TODO: finish me!
+      Node current = Head;
+
+      while (current != null)
+      {
+        // Do something interesting with current
+        if (current.Value == valueToFind)
+        {
+          return true;
+        }
+
+        current = current.Next;
+      }
+
       return false;
     }
 

@@ -58,7 +58,7 @@ namespace DataStructuresTests
       Assert.Null(list.Head.Next.Next);
     }
 
-    [Theory(Skip = "Homework")]
+    [Theory]
     [InlineData(1, false)]
     [InlineData(2, true)]
     [InlineData(3, true)]
