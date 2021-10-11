@@ -13,6 +13,9 @@ namespace DataStructures
       Node newNode = new Node();
       newNode.Value = value;
 
+      // Point new node at the rest of the list
+      newNode.Next = this.Head;
+
       this.Head = newNode;
     }
 
