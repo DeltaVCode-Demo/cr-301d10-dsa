@@ -6,7 +6,7 @@ namespace CodeChallenges
   {
     static void Main(string[] args)
     {
-      LinkedLists.LinkedLlistChallengeO1();
+      // Use tests, please
     }
   }
 }
