@@ -20,6 +20,15 @@ namespace DataStructures
       this.Head = newNode;
     }
 
+    public void Insert(params int[] values)
+    {
+      // Insert at Head in reverse order
+      for (int i = values.Length - 1; i >= 0; i--)
+      {
+        this.Insert(values[i]);
+      }
+    }
+
     public bool Includes(int valueToFind)
     {
       Node current = Head;

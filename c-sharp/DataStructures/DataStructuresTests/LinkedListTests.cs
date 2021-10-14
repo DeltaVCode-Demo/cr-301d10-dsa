@@ -64,6 +64,33 @@ namespace DataStructuresTests
       Assert.Null(list.Head.Next.Next);
     }
 
+    [Fact]
+    public void Insert_many_into_empty_list_works()
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+
+      // Act
+      list.Insert(1, 3, 5);
+
+      // Assert
+      Assert.Equal(new[] { 1, 3, 5 }, list);
+    }
+
+    [Fact]
+    public void Insert_many_into_list_not_empty_works()
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+      list.Insert(7);
+
+      // Act
+      list.Insert(1, 3, 5);
+
+      // Assert
+      Assert.Equal(new[] { 1, 3, 5, 7 }, list);
+    }
+
     [Theory]
     [InlineData(1, false)]
     [InlineData(2, true)]
