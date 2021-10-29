@@ -1,5 +1,6 @@
 using DataStructures.Trees;
 using System;
+using System.Collections.Generic;
 
 namespace CodeChallenges
 {
@@ -41,6 +42,43 @@ namespace CodeChallenges
 
         return sum;
       }
+    }
+
+    public static int CountLeafNodes(BinaryTree<int> tree)
+    {
+      //return CountLeafNodes(tree.Root);
+
+      // Breadth-First
+      Queue<Node<int>> q = new Queue<Node<int>>();
+      q.Enqueue(tree.Root);
+
+      int count = 0; // No files yet
+      while (q.Count > 0)
+      {
+        Node<int> next = q.Dequeue();
+
+        if (next == null) continue; // skip null; not a file
+
+        if (next.Left == null && next.Right == null)
+        {
+          count++;
+        }
+        else
+        {
+          q.Enqueue(next.Left);
+          q.Enqueue(next.Right);
+        }
+      }
+      return count;
+    }
+
+    private static int CountLeafNodes(Node<int> node)
+    {
+      if (node == null) return 0;
+
+      if (node.Left == null && node.Right == null) return 1;
+
+      return CountLeafNodes(node.Left) + CountLeafNodes(node.Right);
     }
   }
 }

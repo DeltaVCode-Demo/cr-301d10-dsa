@@ -109,5 +109,26 @@ namespace CodeChallengesTests
       // Assert
       Assert.Equal(6, result);
     }
+
+    [Fact]
+    public void CountLeafNodes_returns_count_of_nodes_without_Left_or_Right()
+    {
+      // Arrange
+      BinaryTree<int> tree = new BinaryTree<int>();
+      tree.Root = 7; // Assignment is using implicit cast to Node<T>
+      tree.Root.Left = 3;
+      tree.Root.Left.Left = 1; // Leaf
+      tree.Root.Left.Right = 2; // Leaf
+      tree.Root.Right = 4;
+      tree.Root.Right.Left = 6; // Leaf
+      tree.Root.Right.Right = 8;
+      tree.Root.Right.Right.Right = -5; // Leaf
+
+      // Act
+      int result = BinaryTreeChallenges.CountLeafNodes(tree);
+
+      // Assert
+      Assert.Equal(4, result);
+    }
   }
 }
