@@ -14,7 +14,9 @@ namespace CodeChallenges
     {
       if (node == null) return 0;
 
-      return node.Value;
+      return node.Value
+        + (node.Left?.Value ?? 0)
+        + (node.Right?.Value ?? 0);
     }
   }
 }
