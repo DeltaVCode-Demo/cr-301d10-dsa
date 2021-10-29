@@ -15,8 +15,8 @@ namespace CodeChallenges
       if (node == null) return 0;
 
       return node.Value
-        + (node.Left?.Value ?? 0)
-        + (node.Right?.Value ?? 0);
+        + Sum(node.Left)
+        + Sum(node.Right);
     }
   }
 }

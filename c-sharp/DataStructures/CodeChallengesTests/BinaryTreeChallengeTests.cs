@@ -67,5 +67,26 @@ namespace CodeChallengesTests
       // Assert
       Assert.Equal(11, result);
     }
+
+    [Fact]
+    public void Sum_returns_value_of_tree_with_grandchildren()
+    {
+      // Arrange
+      BinaryTree<int> tree = new BinaryTree<int>();
+      tree.Root = new Node<int> { Value = 7 };
+      tree.Root.Left = new Node<int> { Value = 3 };
+      tree.Root.Left.Left = new Node<int> { Value = 1 };
+      tree.Root.Left.Right = new Node<int> { Value = 2 };
+      tree.Root.Right = new Node<int> { Value = 4 };
+      tree.Root.Right.Left = new Node<int> { Value = 6 };
+      tree.Root.Right.Right = new Node<int> { Value = 8 };
+      tree.Root.Right.Right.Right = new Node<int> { Value = -5 };
+
+      // Act
+      int result = BinaryTreeChallenges.Sum(tree);
+
+      // Assert
+      Assert.Equal(26, result);
+    }
   }
 }
