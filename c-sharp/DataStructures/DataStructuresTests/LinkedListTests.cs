@@ -18,6 +18,8 @@ namespace DataStructuresTests
 
       // Assert
       Assert.Null(head);
+
+      Assert.Empty(list);
     }
 
     [Fact]
@@ -30,6 +32,8 @@ namespace DataStructuresTests
       list.Insert(1);
 
       // Assert
+      Assert.Equal(new[] { 1 }, list);
+
       // Make sure we have a Head node
       Assert.NotNull(list.Head);
 
@@ -51,11 +55,40 @@ namespace DataStructuresTests
       list.Insert(3);
 
       // Assert
+      Assert.Equal(new[] { 3, 5 }, list);
+
       Assert.NotNull(list.Head);
       Assert.Equal(3, list.Head.Value);
       Assert.NotNull(list.Head.Next);
       Assert.Equal(5, list.Head.Next.Value);
       Assert.Null(list.Head.Next.Next);
+    }
+
+    [Fact]
+    public void Insert_many_into_empty_list_works()
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+
+      // Act
+      list.Insert(1, 3, 5);
+
+      // Assert
+      Assert.Equal(new[] { 1, 3, 5 }, list);
+    }
+
+    [Fact]
+    public void Insert_many_into_list_not_empty_works()
+    {
+      // Arrange
+      LinkedList list = new LinkedList();
+      list.Insert(7);
+
+      // Act
+      list.Insert(1, 3, 5);
+
+      // Assert
+      Assert.Equal(new[] { 1, 3, 5, 7 }, list);
     }
 
     [Theory]
@@ -68,6 +101,7 @@ namespace DataStructuresTests
       LinkedList list = new LinkedList();
       list.Insert(2);
       list.Insert(3);
+      Assert.Equal(new[] { 3, 2 }, list); // Make sure we didn't screw up
 
       // Act
       bool result = list.Includes(valueToFind);
@@ -97,6 +131,7 @@ namespace DataStructuresTests
       list.Insert(3);
       list.Insert(2);
       list.Insert(1);
+      Assert.Equal(new[] { 1, 2, 3 }, list); // Make sure we didn't screw up
 
       // Act
       string result = list.ToString();

@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataStructures
 {
-  public class LinkedList
+  public class LinkedList : IEnumerable<int>
   {
     public Node Head { get; set; }
 
@@ -17,6 +18,15 @@ namespace DataStructures
       newNode.Next = this.Head;
 
       this.Head = newNode;
+    }
+
+    public void Insert(params int[] values)
+    {
+      // Insert at Head in reverse order
+      for (int i = values.Length - 1; i >= 0; i--)
+      {
+        this.Insert(values[i]);
+      }
     }
 
     public bool Includes(int valueToFind)
@@ -57,6 +67,26 @@ namespace DataStructures
       output = output + "NULL";
 
       return output;
+    }
+
+    public IEnumerator<int> GetEnumerator()
+    {
+      Node current = Head;
+
+      while (current != null)
+      {
+        // Include this value in our sequence
+        yield return current.Value;
+
+        // Move to next node
+        current = current.Next;
+      }
+    }
+
+    // Explicit implementation because legacy code
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+      return GetEnumerator();
     }
   }
 }
