@@ -39,6 +39,23 @@ namespace DataStructuresTests.Graphs
       Assert.Contains(result, graph.Nodes);
 
       // TODO: has no edges
+      //Assert.Empty(result.Neighbors);
+      //Assert.Empty(graph.GetNeighbors(result));
+    }
+
+    [Fact(Skip = "TODO")]
+    public void AddEdge_with_nodes_makes_them_Neighbors()
+    {
+      // Arrange
+      var graph = new Graph();
+      var node1 = graph.AddNode("Oscar");
+      var node2 = graph.AddNode("Big Bird");
+
+      // Act
+      graph.AddEdge(node1, node2);
+
+      // Assert
+      // TODO: How can we tell this worked?
     }
   }
 }

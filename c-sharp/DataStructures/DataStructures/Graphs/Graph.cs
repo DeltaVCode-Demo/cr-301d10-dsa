@@ -22,6 +22,10 @@ namespace DataStructures.Graphs
     }
 
     // add edge
+    public void AddEdge(GraphNode node1, GraphNode node2)
+    {
+      throw new NotImplementedException();
+    }
 
     // Private storage for our Nodes
     private readonly List<GraphNode> nodes = new List<GraphNode>();
