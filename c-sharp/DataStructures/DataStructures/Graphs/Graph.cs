@@ -9,6 +9,18 @@ namespace DataStructures.Graphs
   public class Graph
   {
     // add node
+    public GraphNode AddNode(string value)
+    {
+      var newNode = new GraphNode
+      {
+        Value = value,
+      };
+
+      nodes.Add(newNode);
+
+      return newNode;
+    }
+
     // add edge
 
     // Private storage for our Nodes
@@ -26,5 +38,6 @@ namespace DataStructures.Graphs
 
   public class GraphNode
   {
+    public string Value { get; set; }
   }
 }

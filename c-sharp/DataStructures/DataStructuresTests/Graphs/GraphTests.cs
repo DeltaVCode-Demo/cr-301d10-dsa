@@ -20,5 +20,25 @@ namespace DataStructuresTests.Graphs
       Assert.Empty(graph.Nodes);
       Assert.Equal(0, graph.Count);
     }
+
+    [Fact]
+    public void AddNode_with_value_returns_new_GraphNode()
+    {
+      // Arrange
+      var graph = new Graph();
+
+      // Act
+      GraphNode result = graph.AddNode("DeltaV");
+
+      // Assert
+      Assert.NotNull(result);
+      Assert.Equal("DeltaV", result.Value);
+
+      Assert.NotEmpty(graph.Nodes);
+      Assert.Equal(1, graph.Count);
+      Assert.Contains(result, graph.Nodes);
+
+      // TODO: has no edges
+    }
   }
 }
