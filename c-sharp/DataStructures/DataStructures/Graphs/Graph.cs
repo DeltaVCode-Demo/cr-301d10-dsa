@@ -10,12 +10,17 @@ namespace DataStructures.Graphs
   {
     // add node
     // add edge
-    // get nodes
-    public IEnumerable<GraphNode> Nodes { get; } = new List<GraphNode>();
-    // get neighbors
-    // size
 
-    public int Count => Nodes.Count();
+    // Private storage for our Nodes
+    private readonly List<GraphNode> nodes = new List<GraphNode>();
+
+    // Public should not be able to Add directly
+    public IEnumerable<GraphNode> Nodes => nodes;
+
+    // get neighbors
+
+    // size
+    public int Count => nodes.Count;
     // public int Count { get { return Nodes.Count();  } }
   }
 
