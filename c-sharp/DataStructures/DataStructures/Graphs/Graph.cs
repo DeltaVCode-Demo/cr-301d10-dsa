@@ -46,6 +46,12 @@ namespace DataStructures.Graphs
     // size
     public int Count => nodes.Count;
     // public int Count { get { return Nodes.Count();  } }
+
+    public IEnumerable<GraphNode> BreadthFirst(GraphNode start)
+    {
+      // TODO: Traverse from start
+      yield break; // Just stop; sequence is empty
+    }
   }
 
   public class GraphNode

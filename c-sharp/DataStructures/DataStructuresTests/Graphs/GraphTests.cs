@@ -71,5 +71,56 @@ namespace DataStructuresTests.Graphs
       // Is 1 still linked to 2?
       Assert.Contains(node1.Neighbors, edge => edge.Node == node2);
     }
+
+    [Fact(Skip = "TODO")]
+    public void BreadthFirst_works()
+    {
+      // Arrange
+      //   (A) -> (B)
+      //    | \    |
+      //    |  \   |
+      //    |   \  |
+      //    |    \ |
+      //    |     \|
+      //    V      V
+      //   (C) -> (D)
+      var graph = new Graph();
+
+      var a = graph.AddNode("A");
+      var b = graph.AddNode("B");
+      var c = graph.AddNode("C");
+      var d = graph.AddNode("D");
+
+      // Adjacency list
+      graph.AddEdge(a, b);
+      graph.AddEdge(a, c);
+      graph.AddEdge(a, d);
+      graph.AddEdge(b, d);
+      graph.AddEdge(c, d);
+
+      // Act
+      var resultA = graph.BreadthFirst(a);
+
+      // Assert
+      Assert.Equal(new[] { a, b, c, d }, resultA);
+
+      // Act
+      var resultB = graph.BreadthFirst(b);
+
+      // Assert
+      Assert.Equal(new[] { b, d }, resultB); // Can't get to A or C
+
+      // Act
+      var resultC = graph.BreadthFirst(c);
+
+      // Assert
+      Assert.Equal(new[] { c, d }, resultC); // Can't get to A or B
+
+      // Act
+      var resultD = graph.BreadthFirst(d);
+
+      // Assert
+      Assert.Equal(new[] { d }, resultD); // Can't get to A, B or C
+    }
   }
 }
