@@ -57,6 +57,19 @@ namespace DataStructuresTests.Graphs
 
       // Assert
       Assert.Contains(node1.Neighbors, edge => edge.Node == node2);
+      //Assert.True(node1.Neighbors.Any(edge => edge.Node == node2));
+
+      // Should not link from 2 to 1 yet
+      Assert.Empty(node2.Neighbors);
+
+      // Act again
+      graph.AddEdge(node2, node1);
+
+      // Assert
+      Assert.Contains(node2.Neighbors, edge => edge.Node == node1);
+
+      // Is 1 still linked to 2?
+      Assert.Contains(node1.Neighbors, edge => edge.Node == node2);
     }
   }
 }
