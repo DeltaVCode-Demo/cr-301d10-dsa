@@ -39,7 +39,7 @@ namespace DataStructuresTests.Graphs
       Assert.Contains(result, graph.Nodes);
 
       // TODO: has no edges
-      //Assert.Empty(result.Neighbors);
+      Assert.Empty(result.Neighbors);
       //Assert.Empty(graph.GetNeighbors(result));
     }
 

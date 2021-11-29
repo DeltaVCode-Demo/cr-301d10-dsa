@@ -43,5 +43,13 @@ namespace DataStructures.Graphs
   public class GraphNode
   {
     public string Value { get; set; }
+
+    // Read-only property that always has a List, i.e. never null
+    public List<GraphEdge> Neighbors { get; } = new List<GraphEdge>();
+  }
+
+  public class GraphEdge
+  {
+    // TODO: What do we need?
   }
 }
