@@ -38,9 +38,10 @@ namespace DataStructuresTests.Graphs
       Assert.Equal(1, graph.Count);
       Assert.Contains(result, graph.Nodes);
 
-      // TODO: has no edges
       Assert.Empty(result.Neighbors);
-      //Assert.Empty(graph.GetNeighbors(result));
+
+      // Reference Equality, like === in JS
+      Assert.Same(result.Neighbors, graph.GetNeighbors(result));
     }
 
     [Fact(Skip = "TODO")]

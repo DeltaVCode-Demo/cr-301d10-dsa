@@ -34,6 +34,11 @@ namespace DataStructures.Graphs
     public IEnumerable<GraphNode> Nodes => nodes;
 
     // get neighbors
+    public IEnumerable<GraphEdge> GetNeighbors(GraphNode node)
+    {
+      // Is this really useful? Not so much.
+      return node.Neighbors;
+    }
 
     // size
     public int Count => nodes.Count;
