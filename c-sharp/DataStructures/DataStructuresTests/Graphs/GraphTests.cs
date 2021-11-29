@@ -44,7 +44,7 @@ namespace DataStructuresTests.Graphs
       Assert.Same(result.Neighbors, graph.GetNeighbors(result));
     }
 
-    [Fact(Skip = "TODO")]
+    [Fact]
     public void AddEdge_with_nodes_makes_them_Neighbors()
     {
       // Arrange
@@ -56,7 +56,7 @@ namespace DataStructuresTests.Graphs
       graph.AddEdge(node1, node2);
 
       // Assert
-      // TODO: How can we tell this worked?
+      Assert.Contains(node1.Neighbors, edge => edge.Node == node2);
     }
   }
 }

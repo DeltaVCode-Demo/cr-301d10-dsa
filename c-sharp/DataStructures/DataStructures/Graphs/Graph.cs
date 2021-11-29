@@ -24,7 +24,10 @@ namespace DataStructures.Graphs
     // add edge
     public void AddEdge(GraphNode node1, GraphNode node2)
     {
-      throw new NotImplementedException();
+      node1.Neighbors.Add(new GraphEdge
+      {
+        Node = node2,
+      });
     }
 
     // Private storage for our Nodes
@@ -55,6 +58,6 @@ namespace DataStructures.Graphs
 
   public class GraphEdge
   {
-    // TODO: What do we need?
+    public GraphNode Node { get; set; }
   }
 }
