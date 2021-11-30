@@ -56,9 +56,10 @@ namespace DataStructures.Graphs
       breadth.Enqueue(start);
       visited.Add(start);
 
-      while (breadth.Count > 0) // or use TryDequeue
+      // while (breadth.Count > 0) // or use TryDequeue
+      while (breadth.TryDequeue(out GraphNode front))
       {
-        var front = breadth.Dequeue();
+        // var front = breadth.Dequeue();
         // results.Add(front); 
         yield return front;
 
