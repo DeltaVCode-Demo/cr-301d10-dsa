@@ -49,8 +49,32 @@ namespace DataStructures.Graphs
 
     public IEnumerable<GraphNode> BreadthFirst(GraphNode start)
     {
-      // TODO: Traverse from start
-      yield break; // Just stop; sequence is empty
+      // var results = new List<GraphNode>(); // using yield return instead
+      var breadth = new Queue<GraphNode>();
+      var visited = new HashSet<GraphNode>();
+
+      breadth.Enqueue(start);
+      visited.Add(start);
+
+      while (breadth.Count > 0) // or use TryDequeue
+      {
+        var front = breadth.Dequeue();
+        // results.Add(front); 
+        yield return front;
+
+        foreach (var edge in front.Neighbors)
+        {
+          var neighbor = edge.Node;
+
+          if (!visited.Contains(neighbor))
+          {
+            breadth.Enqueue(neighbor);
+            visited.Add(neighbor);
+          }
+        }
+      }
+
+      // return results; // using yield return instead
     }
   }
 

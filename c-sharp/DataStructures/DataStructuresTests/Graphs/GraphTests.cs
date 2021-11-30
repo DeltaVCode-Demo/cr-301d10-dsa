@@ -72,7 +72,7 @@ namespace DataStructuresTests.Graphs
       Assert.Contains(node1.Neighbors, edge => edge.Node == node2);
     }
 
-    [Fact(Skip = "TODO")]
+    [Fact]
     public void BreadthFirst_works()
     {
       // Arrange
