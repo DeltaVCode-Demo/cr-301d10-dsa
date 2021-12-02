@@ -77,6 +77,55 @@ namespace DataStructures.Graphs
 
       // return results; // using yield return instead
     }
+
+    public IEnumerable<GraphNode> DepthFirstRecursive(GraphNode start)
+    {
+      var visited = new HashSet<GraphNode>();
+      return DepthFirst(start);
+
+      IEnumerable<GraphNode> DepthFirst(GraphNode start)
+      {
+        yield return start;
+        visited.Add(start);
+
+        foreach (var edge in start.Neighbors)
+        {
+          var neighbor = edge.Node;
+
+          if (visited.Contains(neighbor)) continue;
+
+          foreach (var n in DepthFirst(neighbor))
+            yield return n;
+        }
+      }
+    }
+
+    public IEnumerable<GraphNode> DepthFirstIterative(GraphNode start)
+    {
+      var visited = new HashSet<GraphNode>();
+      var stack = new Stack<GraphNode>();
+
+      var next = start;
+
+      do
+      {
+        if (!visited.Contains(next))
+        {
+          yield return next;
+          visited.Add(next);
+        }
+
+        // Push all unvisited edges, but in reverse order so first edge to visit is at top of stack
+        foreach (var edge in next.Neighbors.AsEnumerable().Reverse())
+        {
+          var neighbor = edge.Node;
+
+          if (visited.Contains(neighbor)) continue;
+
+          stack.Push(neighbor);
+        }
+      } while (stack.TryPop(out next));
+    }
   }
 
   public class GraphNode
@@ -85,6 +134,11 @@ namespace DataStructures.Graphs
 
     // Read-only property that always has a List, i.e. never null
     public List<GraphEdge> Neighbors { get; } = new List<GraphEdge>();
+
+    public override string ToString()
+    {
+      return $"{Value} ({string.Join(", ", Neighbors.Select(e => e.Node.Value))})";
+    }
   }
 
   public class GraphEdge

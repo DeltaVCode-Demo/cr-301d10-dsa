@@ -2,6 +2,7 @@ using DataStructures.Graphs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
@@ -122,5 +123,50 @@ namespace DataStructuresTests.Graphs
       // Assert
       Assert.Equal(new[] { d }, resultD); // Can't get to A, B or C
     }
+
+    [Theory]
+    [MemberData(nameof(DepthFirstMethods))]
+    public void DepthFirst_works(Expression<Func<Graph, GraphNode, IEnumerable<GraphNode>>> depthFirst)
+    {
+      // Arrange
+      var graph = new Graph();
+
+      var a = graph.AddNode("A");
+      var b = graph.AddNode("B");
+      var c = graph.AddNode("C");
+      var d = graph.AddNode("D");
+      var e = graph.AddNode("E");
+      var f = graph.AddNode("F");
+      var g = graph.AddNode("G");
+      var h = graph.AddNode("H");
+
+      graph.AddEdge(a, b);
+      graph.AddEdge(a, d);
+      graph.AddEdge(b, c);
+      graph.AddEdge(b, d);
+      graph.AddEdge(c, g);
+      graph.AddEdge(d, a);
+      graph.AddEdge(d, b);
+      graph.AddEdge(d, e);
+      graph.AddEdge(d, h);
+      graph.AddEdge(d, f);
+      graph.AddEdge(e, d);
+      graph.AddEdge(f, d);
+      graph.AddEdge(f, h);
+      graph.AddEdge(h, f);
+
+      // Act
+      var result = depthFirst.Compile()(graph, a);
+
+      // Assert
+      Assert.Equal(new[] { a, b, c, g, d, e, h, f }, result);
+    }
+
+    public static TheoryData<Expression<Func<Graph, GraphNode, IEnumerable<GraphNode>>>> DepthFirstMethods =>
+      new()
+      {
+        (graph, start) => graph.DepthFirstRecursive(start),
+        (graph, start) => graph.DepthFirstIterative(start),
+      };
   }
 }
